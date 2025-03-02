@@ -1,0 +1,35 @@
+/* Custom styles beyond Tailwind */
+.form-checkbox {
+    @apply h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+
+/* Chart container */
+#mainChart {
+    height: 400px !important;
+    max-height: 400px !important;
+    width: 100%;
+}
+
+/* Loading state */
+.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Hover effects */
+.hover-effect {
+    transition: all 0.3s ease;
+}
+
+.hover-effect:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLS Data Visualization</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpg" href="BGI circle.jpg">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .header-section {
+            position: relative;
+            height: 300px;
+            background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 2rem;
+        }
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(17, 24, 39, 0.85);
+        }
+        .header-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        .logo-container {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+        .logo-container img {
+            height: 40px;
+            width: auto;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header Section -->
+    <div class="header-section">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Workforce Insights</h1>
+            <p class="text-xl md:text-2xl text-gray-200">Bureau of Labor Statistics Data Visualization</p>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 pb-8">
+        <!-- Left sidebar with controls -->
+        <div class="flex flex-col md:flex-row gap-8">
+            <div class="w-full md:w-1/3 bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-xl font-semibold mb-4">View US Workforce Data</h2>
+                
+                <!-- Data Category Selection -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="dataCategory">
+                        Select Data Category
+                    </label>
+                    <select id="dataCategory" class="form-select">
+                        <option value="occupation">Occupation Groups</option>
+                        <option value="industry">Industry Sectors</option>
+                        <option value="age">Age Groups</option>
+                        <option value="detailedOccupation">Detailed Occupations</option>
+                    </select>
+                </div>
+
+                <!-- Detailed Occupation Controls (initially hidden) -->
+                <div id="detailedOccupationControls" class="hidden">
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="occupationGroup">
+                            Select Occupation Group
+                        </label>
+                        <select id="occupationGroup" class="form-select">
+                            <option value="Management">Management</option>
+                            <option value="Computer and Mathematical">Computer and Mathematical</option>
+                            <option value="Business and Financial Operations">Business and Financial Operations</option>
+                            <option value="Life, Physical, and Social Science">Life, Physical, and Social Science</option>
+                            <option value="Architecture and Engineering">Architecture and Engineering</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-gray-700 text-sm font-bold mb-2" for="dataType">
+                            Select Data Type
+                        </label>
+                        <select id="dataType" class="form-select">
+                            <option value="employment">Employment Levels</option>
+                            <option value="wages">Annual Wages</option>
+                            <option value="education">Educational Distribution</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Chart type selection -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="chartType">
+                        Chart Type
+                    </label>
+                    <select id="chartType" class="w-full p-2 border rounded">
+                        <option value="bar">Bar Chart</option>
+                        <option value="pie">Pie Chart</option>
+                    </select>
+                </div>
+
+                <!-- Description -->
+                <div class="mt-8 p-4 bg-gray-50 rounded">
+                    <h3 class="font-semibold mb-2">About This Data</h3>
+                    <p class="text-sm text-gray-600">
+                        This visualization shows current employment statistics from the Bureau of Labor Statistics, 
+                        allowing you to explore data by occupation groups, industry sectors, and age groups.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right side with charts -->
+            <div class="w-full md:w-2/3 bg-white p-6 rounded-lg shadow-lg relative">
+                <canvas id="mainChart"></canvas>
+                <div id="chartDescription" class="mt-4 text-sm text-gray-600"></div>
+                <div class="logo-container">
+                    <img src="bgi logo.png" alt="BGI Logo" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
